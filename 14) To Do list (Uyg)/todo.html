@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+
+        body {
+            background-color: teal;
+            background-image: url("imgg/todolist.jpg");
+        }
+        div {
+            height: 400px;
+            width: 300px;
+            background-color: wheat;
+            margin-left: 600px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            border: 3px double orange;
+            width: 37%;
+            text-align: center;
+            margin-left: 90px;
+            margin-top: 5px;
+        }
+
+        input {
+            margin-left: 50px;
+
+
+        }
+
+        .Listelement {
+            margin-left: 10px;
+            cursor: pointer;
+            border: none;
+            background: turquoise;
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <h2>To Do List</h2>
+        <input type="text" placeholder="Add something to the list">
+        <button id="btnlist"> Add </button>
+        <ul id="listt"></ul>
+    </div>
+
+    <script>
+        $(function () {
+            $("#btnlist").on("click", function () {
+                var inputval = $("input").val();
+                if (inputval != " ") {
+                    var listitem = $("<li></li>").text(inputval);
+                    $(listitem).append("<button class = \"Listelement\"> x </button>");
+                    $("#listt").append(listitem);
+                    $("input").val("");
+                    $(".Listelement").on("click", function () {
+                        $(this).parent().remove();
+                    });
+
+
+                }
+            });
+        });
+       
+    </script>
+
+</body>
+
+</html>
